@@ -2,8 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
-const Profile = require('./model/profileSchema');
-
+// const Profile = require('./model/profileSchema');
 
 async function main() {
   try {
@@ -42,15 +41,22 @@ app.get('/settings', (req,res) => {
     res.render('settings')
 })
 
-const profile1 = new Profile({
-    firstName: 'Abhinav',
-    lastName: 'Saxena',
-    phone : 7565893606,
-    email: 'abhinav150601@gmail.com',
-    address: 'Ayodhya Prasad Apartment',
-    city: 'Gorakhpur',
-    state: 'Uttar Pradesh',
-    pincode: 273001
+app.get('/login',(req,res) => {
+    res.render('login')
 })
 
-profile1.save()
+app.get('/signup',(req,res) => {
+    res.render('signup')
+})
+
+// const profile1 = new Profile({
+//     firstName: 'Abhinav',
+//     lastName: 'Saxena',
+//     phone : 7565893606,
+//     email: 'abhinav150601@gmail.com',
+//     address: 'Ayodhya Prasad Apartment',
+//     city: 'Gorakhpur',
+//     state: 'Uttar Pradesh',
+//     pincode: 273001
+// })
+
