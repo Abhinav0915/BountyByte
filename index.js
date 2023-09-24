@@ -13,3 +13,15 @@ app.listen(3000, (req,res)=>{
 app.get('/' , (req,res) => {
     res.render('homepage')
 })
+app.get('/postQuestion' , (req,res) => {
+    res.send('Page Where You can Post Your Question')
+})
+app.get('/answerQuestion' , (req,res) => {
+    res.send('Page Where You can Redeem Points')
+})
+app.get('/profile' , (req,res) => {
+    res.send('Page Where You can see your Profile')
+})
+app.get('/settings', (req,res) => {
+    res.render('settings')
+})
