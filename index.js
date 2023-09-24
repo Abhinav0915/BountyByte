@@ -1,6 +1,20 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
+
+mongoose.set('strictQuery', false);
+
+main().catch(err => console.log(err));
+
+async function main() {
+  try {
+    await mongoose.connect('mongodb://127.0.0.1:27017/moviesApp');
+    console.log('Connection Successful');
+  } catch (error) {
+    console.error('Connection Error:', error);
+  }
+}
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname,'/views'))
