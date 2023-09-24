@@ -17,14 +17,14 @@
           <h5 class="card-title text-center" style="align-items: center; font-family: Black Ops One">Register To BountyByte</h5>
         </div>
         <hr>
-        <form class="row g-3">
+        <form class="row g-3" action="/signup" method="post">
             <div class="col-12">
               <label for="inputEmailId" class="form-label">Email ID</label>
-              <input type="text" class="form-control" id="inputEmailId" placeholder="Enter Email">
+              <input type="text" class="form-control" id="inputEmailId" placeholder="Enter Email" name="email">
             </div>
             <div class="col-12">
               <label for="inputPassword" class="form-label">Password</label>
-              <input type="text" class="form-control" id="inputPassword" placeholder="Enter Password">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Enter Password" name="password">
             </div>
             <div class="col-12">
               <div class="form-check">
@@ -34,9 +34,11 @@
                 </label>
               </div>
             </div>
-          </form>   
+            
           <hr>
-        <button type="button" class="btn btn-success mt-4">Register</button>
+          <input type="submit" value="Register" class="btn btn-success mt-4">
+        
+    </form> 
         <div class="card-body">
             <p class="text-center">Already Registered? <a href="/login" class="card-link">Log In</a></p>
          

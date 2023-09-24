@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
+const login = require('./model/loginSchema');
+
 // const Profile = require('./model/profileSchema');
 
 async function main() {
@@ -18,6 +20,7 @@ main().catch(err => console.log(err));
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname,'/views'))
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.urlencoded({extended: false}))
 
 app.listen(8080, (req,res)=>{
     console.log('Server is running on port 3000');
@@ -49,6 +52,29 @@ app.get('/signup',(req,res) => {
     res.render('signup')
 })
 
+app.post('/signup', async (req,res)=>{
+    const data = {
+        email: req.body.email,
+        password: req.body.password
+    }
+    await login.insertMany([data])
+    res.redirect('/')
+})
+
+app.post('/login', async (req,res)=>{
+    const data = {
+        email: req.body.email,
+        password: req.body.password
+    }
+    const result = await login.findOne(data)
+    if(result){
+        res.redirect('/')
+    }
+    else{
+        res.redirect('/login')
+        // res.alert('Wrong Details!!')
+    }
+})
 // const profile1 = new Profile({
 //     firstName: 'Abhinav',
 //     lastName: 'Saxena',

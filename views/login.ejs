@@ -17,16 +17,21 @@
           <h5 class="card-title text-center" style="align-items: center; font-family: Black Ops One">Login To BountyByte</h5>
         </div>
         <ul class="list-group list-group-flush">
-            <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label mt-3">Email Id</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Email">
-              </div>
-              <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Password</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Password">
-              </div>
+            <form action="/login" method="post">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label mt-3">Email Id</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Email" name="email">
+                  </div>
+                  <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Enter Password" name="password">
+                  </div>
+            
+            
         </ul>
-        <button type="button" class="btn btn-success mt-4">Log In</button>
+        <input type="submit" value="Log In" class="btn btn-success mt-4">
+        
+    </form>
         <div class="card-body">
             <p class="text-center">Already have a account? <a href="/signup" class="card-link">Sign Up</a></p>
          
