@@ -9,7 +9,7 @@ main().catch(err => console.log(err));
 
 async function main() {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/moviesApp');
+    await mongoose.connect('mongodb://127.0.0.1:27017/BountyByte');
     console.log('Connection Successful');
   } catch (error) {
     console.error('Connection Error:', error);
