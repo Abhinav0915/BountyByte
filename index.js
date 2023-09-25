@@ -37,7 +37,7 @@ app.use(session({
     saveUninitialized: true,
   }));
 
-app.listen(8080, (req,res)=>{
+app.listen(3000, (req,res)=>{
     console.log('Server is running on port 3000');
 })
 
@@ -46,7 +46,7 @@ app.get('/homepage' , (req,res) => {
     res.render('homepage')
 })
 app.get('/postQuestion' , (req,res) => {
-    res.send('Page Where You can Post Your Question')
+    res.render('postQuestion')
 })
 app.get('/answerQuestion' , (req,res) => {
     res.send('Page Where You can Redeem Points')

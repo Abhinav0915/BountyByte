@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=EB+Garamond:wght@500&family=Orbitron:wght@700&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/postQuestion.css">
+    <title>Post Question</title>
+</head>
+<body>
+    <nav class="navbar" style="padding-left: 5%;padding-right: 5%;">
+        <div class="container-fluid">
+          <a class="navbar-brand"><img src="icon2.png" alt=""><span style="color: white;  font-family: Black Ops One; letter-spacing: 3px;" class="p-2">BountyByte</span></a>
+          <ul class="nav nav-underline">
+            <li class="nav-item">
+              <a class="nav-link" href="/homepage" style="color: white; font-family: Black Ops One; ">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/postQuestion" style="color: white; font-family: Black Ops One">Post Questions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/answerQuestion" style="color: white; font-family: Black Ops One" >Answer Questions</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: white; font-family: Black Ops One">Profile</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Your Posts</a></li>
+                <li><a class="dropdown-item" href="/settings">Settings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/logout">Log Out </a></li>
+              </ul>
+            </li>
+            
+          </ul>
+          </form>
+        </div>
+      </nav>
+     
+    <form class="form-range" action="/postQuestion" method="post">
+        <div class="card">
+            <div class="card-header text-center">
+              Post Your Question
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="questionField">Question</label>
+                    <input type="text" id="questionField" placeholder="Enter your Question" class="form-control my-1">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mt-2">
+                            <label for="preferredLanguage">Preferred Language</label>
+                            <input type="text" id="preferredLanguage" placeholder="Enter Coding" class="form-control my-1">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="class-group mt-2">
+                            <label for="bountyField">Set Bounty</label>
+                            <div class="input-group my-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text mx-2">&#8377;</span>
+                                </div>
+                                <input type="number" id="bountyField" placeholder="Enter your Bounty" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="class-group mt-2">
+                            <label for="timeField">Deadline</label>
+                            <input type="datetime-local" id="timeField" placeholder="Enter Deadline" class="form-control my-1">
+                        </div>
+                    </div>
+                </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mt-2">
+                            <label for="codeImageField">Upload Image(If Any)</label>
+                            <input type="file" id="codeImageField" class="form-control my-1">
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-success mt-3" style="width: 100%;">
+            </div>
+          </div>
+    </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+</body>
+</html>
