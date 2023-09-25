@@ -1,8 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const session = require('express-session');
 const app = express();
 const path = require('path');
 const login = require('./model/loginSchema');
+
+const crypto = require('crypto');
+
+// Generate a random secret key
+const secretKey = crypto.randomBytes(32).toString('hex');
+
+console.log('Random Secret Key:', secretKey);
+
 
 // const Profile = require('./model/profileSchema');
 
@@ -22,12 +31,18 @@ app.set('views', path.join(__dirname,'/views'))
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({extended: false}))
 
+app.use(session({
+    secret: secretKey,
+    resave: false,
+    saveUninitialized: true,
+  }));
+
 app.listen(8080, (req,res)=>{
     console.log('Server is running on port 3000');
 })
 
 
-app.get('/' , (req,res) => {
+app.get('/homepage' , (req,res) => {
     res.render('homepage')
 })
 app.get('/postQuestion' , (req,res) => {
@@ -44,7 +59,7 @@ app.get('/settings', (req,res) => {
     res.render('settings')
 })
 
-app.get('/login',(req,res) => {
+app.get('/',(req,res) => {
     res.render('login')
 })
 
@@ -58,31 +73,35 @@ app.post('/signup', async (req,res)=>{
         password: req.body.password
     }
     await login.insertMany([data])
-    res.redirect('/')
+    res.redirect('/homepage')
 })
 
-app.post('/login', async (req,res)=>{
+app.post('/', async (req,res)=>{
     const data = {
         email: req.body.email,
         password: req.body.password
     }
     const result = await login.findOne(data)
-    if(result){
-        res.redirect('/')
+    try {
+        if(result){
+        res.redirect('/homepage')
     }
     else{
-        res.redirect('/login')
-        // res.alert('Wrong Details!!')
+        res.render('login',{error: 'Wrond Details!!'})
     }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Internal Server Error');
+    }
+    
 })
-// const profile1 = new Profile({
-//     firstName: 'Abhinav',
-//     lastName: 'Saxena',
-//     phone : 7565893606,
-//     email: 'abhinav150601@gmail.com',
-//     address: 'Ayodhya Prasad Apartment',
-//     city: 'Gorakhpur',
-//     state: 'Uttar Pradesh',
-//     pincode: 273001
-// })
-
+app.get('/logout', (req,res)=>{
+    req.session.destroy((err)=>{
+        if(err){
+            return res.redirect('/homepage')
+        }
+        res.clearCookie('sid')
+        res.redirect('/')
+    })
+}
+)
