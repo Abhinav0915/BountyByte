@@ -1,19 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const multer = require('multer');
 const app = express();
 const path = require('path');
 const login = require('./model/loginSchema');
-
 const crypto = require('crypto');
+const Question = require('./model/postQuestion');
+// const Profile = require('./model/profileSchema');
 
 // Generate a random secret key
 const secretKey = crypto.randomBytes(32).toString('hex');
-
-console.log('Random Secret Key:', secretKey);
-
-
-// const Profile = require('./model/profileSchema');
 
 async function main() {
   try {
@@ -23,6 +20,7 @@ async function main() {
     console.error('Connection Error:', error);
   }
 }
+
 mongoose.set('strictQuery', false);
 main().catch(err => console.log(err));
 
@@ -41,6 +39,16 @@ app.listen(3000, (req,res)=>{
     console.log('Server is running on port 3000');
 })
 
+const storage = multer.diskStorage({
+    destination: './uploads/', // Where to store uploaded files
+    filename: (req, file, cb) => {
+      // Generate a unique filename (you can customize this)
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+      cb(null, uniqueSuffix + path.extname(file.originalname));
+    },
+});
+
+const upload = multer({ storage });
 
 app.get('/homepage' , (req,res) => {
     res.render('homepage')
@@ -105,3 +113,25 @@ app.get('/logout', (req,res)=>{
     })
 }
 )
+
+app.post('/postQuestion', (req, res) => {
+    // Access the form data using req.body
+    const question = new Question({
+        questionField: req.body.questionField,
+        preferredLanguage: req.body.preferredLanguage,
+        bountyField: req.body.bountyField,
+        timeField: req.body.timeField,
+        codeImageField: req.body.codeImageField
+    });
+
+    // Save the question to the database
+    question.save()
+        .then(() => {
+            // Handle successful submission
+            res.send('Question submitted successfully');
+        })
+        .catch(error => {
+            // Handle any errors
+            res.status(500).send('Error submitting question: ' + error.message);
+        });
+});
