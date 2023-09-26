@@ -39,8 +39,9 @@ app.listen(3000, (req,res)=>{
     console.log('Server is running on port 3000');
 })
 
+//storage settings
 const storage = multer.diskStorage({
-    destination: './uploads/', // Where to store uploaded files
+    destination: './public/uploads', // Where to store uploaded files
     filename: (req, file, cb) => {
       // Generate a unique filename (you can customize this)
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -48,7 +49,7 @@ const storage = multer.diskStorage({
     },
 });
 
-const upload = multer({ storage });
+const upload = multer({storage: storage});
 
 app.get('/homepage' , (req,res) => {
     res.render('homepage')
@@ -56,8 +57,9 @@ app.get('/homepage' , (req,res) => {
 app.get('/postQuestion' , (req,res) => {
     res.render('postQuestion')
 })
-app.get('/answerQuestion' , (req,res) => {
-    res.send('Page Where You can Redeem Points')
+app.get('/problems' , async (req,res) => {
+    const questions = await Question.find({})
+    res.render('problems', {questions})
 })
 app.get('/profile' , (req,res) => {
     res.send('Page Where You can see your Profile')
@@ -114,14 +116,14 @@ app.get('/logout', (req,res)=>{
 }
 )
 
-app.post('/postQuestion', (req, res) => {
+app.post('/postQuestion',upload.single('codeImageField'), (req, res) => {
     // Access the form data using req.body
     const question = new Question({
         questionField: req.body.questionField,
         preferredLanguage: req.body.preferredLanguage,
         bountyField: req.body.bountyField,
         timeField: req.body.timeField,
-        codeImageField: req.body.codeImageField
+        codeImageField: req.file.filename
     });
 
     // Save the question to the database
@@ -135,3 +137,4 @@ app.post('/postQuestion', (req, res) => {
             res.status(500).send('Error submitting question: ' + error.message);
         });
 });
+

@@ -11,35 +11,38 @@
     <title>Post Question</title>
 </head>
 <body>
-    <nav class="navbar" style="padding-left: 5%;padding-right: 5%;">
-        <div class="container-fluid">
-          <a class="navbar-brand"><img src="icon2.png" alt=""><span style="color: white;  font-family: Black Ops One; letter-spacing: 3px;" class="p-2">BountyByte</span></a>
-          <ul class="nav nav-underline">
-            <li class="nav-item">
-              <a class="nav-link" href="/homepage" style="color: white; font-family: Black Ops One; ">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/postQuestion" style="color: white; font-family: Black Ops One">Post Questions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/answerQuestion" style="color: white; font-family: Black Ops One" >Answer Questions</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: white; font-family: Black Ops One">Profile</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Your Posts</a></li>
-                <li><a class="dropdown-item" href="/settings">Settings</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/logout">Log Out </a></li>
-              </ul>
-            </li>
-            
+    
+  <nav class="navbar" style="padding-left: 5%;padding-right: 5%;">
+    <div class="container-fluid">
+      <a class="navbar-brand"><img src="icon2.png" alt=""><span style="color: white;  font-family: Black Ops One; letter-spacing: 3px;" class="p-2">BountyByte</span></a>
+      <ul class="nav nav-underline">
+        <li class="nav-item">
+          <a class="nav-link" href="/homepage" style="color: white; font-family: Black Ops One; ">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/problems" style="color: white; font-family: Black Ops One" >Problems</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/postQuestion" style="color: white; font-family: Black Ops One">Post Questions</a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: white; font-family: Black Ops One">Profile</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Your Posts</a></li>
+            <li><a class="dropdown-item" href="/settings">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/logout">Log Out </a></li>
           </ul>
-          </form>
-        </div>
-      </nav>
+        </li>
+        
+      </ul>
+      </form>
+    </div>
+  </nav>
+   
      
-    <form class="form-range" action="/postQuestion" method="post">
+    <form class="form-range" action="/postQuestion" method="post" enctype="multipart/form-data">
         <div class="card">
             <div class="card-header text-center">
               Post Your Question
@@ -47,13 +50,17 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="questionField">Question</label>
-                    <input type="text" id="questionField" placeholder="Enter your Question" class="form-control my-1" name="questionField">
+                    <input type="text" id="questionField" placeholder="Enter your Question" class="form-control my-1" name="questionField" required>
+                </div>
+                <div class="form-group">
+                    <label for="descriptionField">Description</label>
+                    <textarea id="descriptionField" placeholder="Enter your Description" class="form-control my-1" name="descriptionField" required></textarea>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group mt-2">
                             <label for="preferredLanguage">Preferred Language</label>
-                            <input type="text" id="preferredLanguage" placeholder="Enter Coding" class="form-control my-1" name="preferredLanguage">
+                            <input type="text" id="preferredLanguage" placeholder="Enter Coding" class="form-control my-1" name="preferredLanguage" required>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -63,7 +70,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text mx-2">&#8377;</span>
                                 </div>
-                                <input type="number" id="bountyField" placeholder="Enter your Bounty" class="form-control" name="bountyField">
+                                <input type="number" id="bountyField" placeholder="Enter your Bounty" class="form-control" name="bountyField" required>
                             </div>
                         </div>
                     </div>
@@ -73,7 +80,7 @@
                     <div class="col-md-6">
                         <div class="class-group mt-2">
                             <label for="timeField">Deadline</label>
-                            <input type="datetime-local" id="timeField" placeholder="Enter Deadline" class="form-control my-1" name="timeField">
+                            <input type="datetime-local" id="timeField" placeholder="Enter Deadline" class="form-control my-1" name="timeField" required>
                         </div>
                     </div>
                 </div>

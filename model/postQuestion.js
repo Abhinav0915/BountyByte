@@ -5,7 +5,7 @@ const questionSchema = new mongoose.Schema({
     preferredLanguage: String,
     bountyField: Number,
     timeField: Date,
-    codeImageField: String, // Assuming you store the image URL
+    codeImageField: String, 
 });
 
 // Create a Mongoose model based on the schema
