@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const questionSchema = new mongoose.Schema({
     questionField: String,
+    descriptionField: String,
     preferredLanguage: String,
     bountyField: Number,
     timeField: Date,

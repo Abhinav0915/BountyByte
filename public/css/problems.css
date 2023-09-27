@@ -2,3 +2,36 @@ body{
     background-color: #1d2d44;
     padding-top: 1%;
 }
+.cardText{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#cardBody:hover{
+    background-color: lightgray;
+}   
+.uploadedImage{
+    width: 30%;
+    height: 30%;
+    align-items: center;
+}
+/* CSS for styling the bounty and deadline */
+.questionDeadline {
+    display: flex;
+    justify-content: space-between; /* Creates space between elements */
+    align-items: center; /* Centers elements vertically */
+  }
+  
+  .bountyPrice {
+    color: green;
+    font-weight: bold;
+    margin-right: 10px; /* Adjust spacing as needed */
+  }
+  
+  .deadline {
+    font-style: italic;
+    color: #555; /* Adjust color as needed */
+  }
+  
+.timeLeft{
+    color: red;
+    font-weight: bold;
+}

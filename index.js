@@ -120,6 +120,7 @@ app.post('/postQuestion',upload.single('codeImageField'), (req, res) => {
     // Access the form data using req.body
     const question = new Question({
         questionField: req.body.questionField,
+        descriptionField: req.body.descriptionField,
         preferredLanguage: req.body.preferredLanguage,
         bountyField: req.body.bountyField,
         timeField: req.body.timeField,
