@@ -7,9 +7,6 @@ const path = require('path');
 const login = require('./model/loginSchema');
 const crypto = require('crypto');
 const Question = require('./model/postQuestion');
-// const Profile = require('./model/profileSchema');
-
-// Generate a random secret key
 const secretKey = crypto.randomBytes(32).toString('hex');
 
 async function main() {
@@ -72,6 +69,10 @@ app.get('/settings', (req,res) => {
 app.get('/',(req,res) => {
     res.render('login')
 })
+app.get('/submitSolution', (req, res) => { 
+     res.render('submitSolution');
+});
+  
 
 app.get('/signup',(req,res) => {
     res.render('signup')

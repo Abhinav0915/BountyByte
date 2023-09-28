@@ -8,11 +8,11 @@ body{
 #cardBody:hover{
     background-color: lightgray;
 }   
-.uploadedImage{
-    width: 30%;
-    height: 30%;
+/* .uploadedImage{
+    width: 50%;
+    height: 50%;
     align-items: center;
-}
+} */
 /* CSS for styling the bounty and deadline */
 .questionDeadline {
     display: flex;
