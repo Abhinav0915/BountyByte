@@ -7,6 +7,8 @@ const path = require('path');
 const login = require('./model/loginSchema');
 const crypto = require('crypto');
 const Question = require('./model/postQuestion');
+const http = require('http'); // Import the HTTP module
+const socketIo = require('socket.io'); // Import socket.io
 const secretKey = crypto.randomBytes(32).toString('hex');
 
 async function main() {
